@@ -1,0 +1,227 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="abu.assignment5new.controller.details" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:ui="sap.ui.table" xmlns:uirm="sap.ui.table.rowmodes" xmlns:uxap="sap.uxap"
+xmlns:f="sap.f"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:svm="sap.ui.comp.smartvariants">
+    <form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2" visible="{emp>/empVisible}">
+        <form:content>
+            <!-- <Image id="img" src="" width="100px" height="100px" />  -->
+            <Label text="Employee Name" design="Bold"/>
+            <Text id="name" text=""/>
+            <Label text="Title" design="Bold"/>
+            <Text id="title" text=""/>
+            <Label text="Home Phone" design="Bold"/>
+            <Text id="phone" text=""/> 
+			<!-- <Label id="name" text="Employee Name" design="Bold"/>
+            <Text text=""/>
+            <Label id="title" text="Title" design="Bold"/>
+            <Text  text=""/>
+            <Label id="phone" text="Home Phone" design="Bold"/>
+            <Text  text=""/> -->
+
+        </form:content>
+    </form:SimpleForm>
+    <uxap:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" selectedSection="goals" upperCaseAnchorBar="false">
+	<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+        	</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection titleUppercase="false" id="info" title="Employee Info">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="goalsSS1" titleUppercase="false">
+                        <form:SimpleForm title="">
+                        <VBox >
+                        <HBox class="button">
+                        <m:Button text="Edit" type="Emphasized" press="onEdit" width="100%"/>
+                        <m:Button type="Transparent" text="Save" press="onSave" width="100%"/>
+                        </HBox>
+                        
+                        <HBox >
+                        <VBox class="act">
+                        <Text class="Headings" text="Personal Details"  />
+                         <HBox >
+                       <Label class="label" text="Title" labelFor="title1" design="Bold" />
+		                 <Input class="inp" id="title1" width="149%" />
+                         </HBox>
+                        <HBox >
+					<Label class="label" text="Title Of Courtesy" labelFor="courtesy" design="Bold" />
+		                 <Input id="courtesy"  />
+					   </HBox>
+                       <HBox >
+                       <Label class="label" text="BirthDate" labelFor="hdate" design="Bold" />
+		                 <Input class="inp" id="hdate" width="128%"/>
+                         </HBox>
+                         <HBox >
+                       <Label class="label" text="Hire Date" labelFor="bdate" design="Bold" />
+		                 <Input class="inp" id="bdate" width="128%"  />
+                         </HBox>
+                        
+                       </VBox>
+                        <VBox class="act">
+                          <Text class="Headings" text="Address Details"  />
+				         <HBox >
+                       <Label class="label" text="Address" labelFor="addres" design="Bold" />
+		                 <Input class="inp" id="addres" width="114%"/>
+                         </HBox>
+                        <HBox >
+					<Label class="label" text="City" labelFor="city" design="Bold" />
+		                 <Input id="city" width="131%" />
+					   </HBox>
+                       <HBox >
+                       <Label class="label" text="Postal Code" labelFor="postal" design="Bold" />
+		                 <Input class="inp" id="postal" />
+                         </HBox>
+                         <HBox >
+                       <Label class="label" text="Country" labelFor="country" design="Bold" />
+		                 <Input class="inp" id="country" width="115%" />
+                         </HBox>
+						</VBox>	
+                        <VBox class="act">
+                      <Text class="Headings" text="Contact Details"  />
+				    <HBox >
+                       <Label class="label" text="HomePhone" labelFor="phone1" design="Bold" />
+		                 <Input class="inp" id="phone1" width="114%"/>
+                         </HBox>
+                        
+                        </VBox>
+							</HBox>
+                            </VBox>
+                        </form:SimpleForm>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+				</uxap:ObjectPageSection>
+
+			
+				<uxap:ObjectPageSection titleUppercase="false" id="orders" title="Orders">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="ord" titleUppercase="false">
+                        <form:SimpleForm title="Orders">
+                           	<f:DynamicPage>
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
+					</f:heading>
+					<f:expandedContent>
+						<Label id="expandedLabel" text="No filters active" />
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label id="snappedLabel" text="No filters active" />
+					</f:snappedContent>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+						<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="Order ID" label="Order ID" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<MultiComboBox
+											name="OrderID"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Orders',
+												templateShareable: true
+											}"
+										>
+											<core:Item key="{OrderID}" text="{OrderID}"/>
+										</MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Customer ID" label="Customer ID" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<MultiComboBox
+											name="CustomerID"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Orders',
+												templateShareable: true
+											}"
+										>
+											<core:Item key="{CustomerID}}" text="{CustomerID}"/>
+										</MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Ship Via" label="Ship Via" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<MultiComboBox
+											name="Ship Via"
+											selectionChange=".onSelectionChange"
+											items="{
+												path: '/Orders',
+												templateShareable: true
+											}"
+										>
+											<core:Item key="{ShipVia}" text="{ShipVia}"/>
+										</MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+                                
+							</fb:filterGroupItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<Table
+					id="table"
+					inset="false"
+					items="{
+						path: '/Orders'
+					}"
+				>
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Order ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Customer ID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Ship Via"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Ship Name"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Frieght"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Ship Country"/>
+						</Column>
+					</columns>
+
+					<items>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<ObjectIdentifier title="{OrderID}" text="" />
+								<Text text="{CustomerID}" />
+								<Text text="{ShipVia}" />
+                                <Text text="{ShipName}" />
+                                <Text text="{Frieght}" />
+                                <Text text="{ShipCountry}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</f:content>
+		</f:DynamicPage>
+                        </form:SimpleForm>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+				<uxap:ObjectPageSection titleUppercase="false" id="territories" title="Territories">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="terr" titleUppercase="false" >
+                        <form:SimpleForm title="Bro2">
+                            <!-- Add your content here -->
+                        </form:SimpleForm>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>
