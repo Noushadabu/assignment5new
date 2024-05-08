@@ -1,22 +1,6 @@
 ## Application Details
-|               |
-| ------------- |
-|**Generation Date and Time**<br>Thu May 02 2024 06:09:50 GMT+0000 (Coordinated Universal Time)|
-|**App Generator**<br>@sap/generator-fiori-freestyle|
-|**App Generator Version**<br>1.13.3|
-|**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>simple|
-|**Service Type**<br>OData Url|
-|**Service URL**<br>https://services.odata.org/northwind/northwind.svc
-|**Module Name**<br>assignment5new|
-|**Application Title**<br>App Title|
-|**Namespace**<br>abu|
-|**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.123.1|
-|**Enable Code Assist Libraries**<br>False|
-|**Enable TypeScript**<br>False|
-|**Add Eslint configuration**<br>False|
 
+First app
 ## assignment5new
 
 An SAP Fiori application.
